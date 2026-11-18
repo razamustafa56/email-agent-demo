@@ -1,0 +1,40 @@
+# Builds the demo and publishes it on GitHub Pages.
+# Runs when you upload changes, once a day (so the made-up emails always read as "today"),
+# and from the Actions tab (Run workflow). Free for public repositories.
+name: Publish demo
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "7 9 * * *"      # every day, about 4-5 AM New York time
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python build.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
