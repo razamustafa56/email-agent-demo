@@ -1,0 +1,16 @@
+/* Intro banner for the public demo; colours come from app.css */
+.demo-banner { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 28px; }
+.demo-inner { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 860px; }
+.demo-pill { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--ud-fg); background: var(--ud-bg); border-radius: 999px; padding: 3px 10px; }
+.demo-banner h2 { font-size: 22px; line-height: 1.25; text-wrap: balance; }
+.demo-banner p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+.demo-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 2px 0 0; padding: 0; font-size: 14px; color: var(--ink-2); }
+.demo-stats strong { font-family: "Space Grotesk", Inter, sans-serif; font-size: 18px; margin-right: 2px; font-variant-numeric: tabular-nums; }
+.demo-how summary { cursor: pointer; color: var(--blue); font-weight: 600; font-size: 14px; min-height: 32px; display: inline-flex; align-items: center; }
+.demo-how ol { margin: 8px 0 10px; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.demo-how .demo-stack { font-size: 13px; }
+.clean .demo-banner { display: none; }
+@media (max-width: 600px) {
+  .demo-inner { padding: 16px; }
+  .demo-banner h2 { font-size: 19px; }
+}
